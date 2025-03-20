@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="configuracoes">
+        <h2>Configurações</h2>
+        <button onclick="mudarQualidade()">Mudar qualidade das músicas</button>
+        <button onclick="trocarNome()">Trocar nome da conta</button>
+    </div>
+
+    <div id="popupQualidade" class="popup">
+        <div class="popup-content">
+            <h3>Escolha a qualidade</h3>
+            <button onclick="definirQualidade('320kbps')">320 kbps</button>
+            <button onclick="definirQualidade('256kbps')">256 kbps</button>
+            <button onclick="definirQualidade('128kbps')">128 kbps</button>
+            <button onclick="fecharPopup()">Fechar</button>
+        </div>
+    </div>
+
+    <div id="popupTrocarNome" class="popup">
+        <div class="popup-content">
+            <h3>Trocar nome da conta</h3>
+            <input type="text" id="nomeAntigo" placeholder="Nome antigo" disabled />
+            <input type="text" id="nomeNovo" placeholder="Novo nome" />
+            <button onclick="salvarNovoNome()">Salvar</button>
+            <button onclick="fecharPopup()">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        // Funções para alterar a qualidade
+        function mudarQualidade() {
+            document.getElementById('popupQualidade').classList.add('open');
+        }
+
+        function definirQualidade(qualidade) {
+            alert(`Qualidade definida para ${qualidade}`);
+            fecharPopup();
+        }
+
+        // Funções para trocar nome
+        function trocarNome() {
+            document.getElementById('popupTrocarNome').classList.add('open');
+        }
+
+        function salvarNovoNome() {
+            const nomeNovo = document.getElementById('nomeNovo').value;
+            localStorage.setItem('nome', nomeNovo);
+            alert('Nome alterado com sucesso!');
+            fecharPopup();
+        }
+
+        // Função para fechar os popups
+        function fecharPopup() {
+            document.querySelectorAll('.popup').forEach(popup => {
+                popup.classList.remove('open');
+            });
+        }
+    </script>
+</body>
+</html>
