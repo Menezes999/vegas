@@ -20,7 +20,7 @@
     </div>
 
     <!-- Main Content -->
-    <div class="main-content">
+    <div class="main-content" onclick="closeSideDrawer(event)">
         <header>
             <div class="search-container">
                 <input type="text" placeholder="Pesquise por músicas, artistas, álbuns...">
@@ -139,6 +139,14 @@
         function toggleSideDrawer() {
             const drawer = document.getElementById('side-drawer');
             drawer.classList.toggle('open');
+        }
+
+        // Fechar a gaveta lateral ao clicar fora dela
+        function closeSideDrawer(event) {
+            const drawer = document.getElementById('side-drawer');
+            if (drawer.classList.contains('open') && !drawer.contains(event.target) && !event.target.closest('.profile')) {
+                drawer.classList.remove('open');
+            }
         }
 
         // Funções para alterar nome e foto de perfil
