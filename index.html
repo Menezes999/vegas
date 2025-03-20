@@ -25,7 +25,7 @@
             <div class="search-container">
                 <input type="text" placeholder="Pesquise por músicas, artistas, álbuns...">
             </div>
-            <div class="profile">
+            <div class="profile" onclick="toggleSideDrawer()">
                 <!-- A primeira letra do nome será colocada aqui -->
             </div>
         </header>
@@ -63,23 +63,23 @@
         </section>
     </div>
 
-    <!-- Barra Inferior -->
+    <!-- Barra Inferior (Player) -->
     <div class="player">
         <div class="track-info">
             <p>Nome da Música - Artista</p>
         </div>
         <div class="player-controls">
-            <button><i class="fas fa-backward"></i></button>
-            <button><i class="fas fa-play"></i></button>
-            <button><i class="fas fa-forward"></i></button>
+            <button onclick="previousTrack()"><i class="fas fa-backward"></i></button>
+            <button onclick="togglePlayPause()"><i id="play-pause-icon" class="fas fa-play"></i></button>
+            <button onclick="nextTrack()"><i class="fas fa-forward"></i></button>
         </div>
     </div>
 
     <!-- Side Drawer (Gaveta Lateral) -->
-    <div class="side-drawer">
+    <div class="side-drawer" id="side-drawer">
         <div class="drawer-content">
-            <button>Alterar Nome</button>
-            <button>Alterar Foto de Perfil</button>
+            <button onclick="changeName()">Alterar Nome</button>
+            <button onclick="changeProfilePicture()">Alterar Foto de Perfil</button>
         </div>
     </div>
 
@@ -95,7 +95,7 @@
     <script>
         // Verificar se o usuário está cadastrado (se o nome está no localStorage)
         const username = localStorage.getItem('username');
-
+        
         // Se o nome do usuário estiver salvo no localStorage, atualizar o perfil
         if (username) {
             const profile = document.querySelector('.profile');
@@ -108,6 +108,63 @@
             
             // Garantir que o perfil seja visível
             profile.style.display = 'flex';  // Ajuste para garantir que o perfil aparece como um círculo com a letra
+        }
+
+        // Função para alternar entre Play/Pause
+        function togglePlayPause() {
+            const playPauseIcon = document.getElementById('play-pause-icon');
+            if (playPauseIcon.classList.contains('fa-play')) {
+                playPauseIcon.classList.remove('fa-play');
+                playPauseIcon.classList.add('fa-pause');
+            } else {
+                playPauseIcon.classList.remove('fa-pause');
+                playPauseIcon.classList.add('fa-play');
+            }
+        }
+
+        // Funções para mudar a música (simulação)
+        function nextTrack() {
+            alert('Música avançada!');
+        }
+
+        function previousTrack() {
+            alert('Música retrocedida!');
+        }
+
+        // Função para mostrar a gaveta lateral
+        function toggleSideDrawer() {
+            const drawer = document.getElementById('side-drawer');
+            drawer.classList.toggle('open');
+        }
+
+        // Funções para alterar nome e foto de perfil
+        function changeName() {
+            const newName = prompt('Digite o novo nome:');
+            if (newName) {
+                localStorage.setItem('username', newName);
+                location.reload(); // Atualiza a página para refletir o novo nome
+            }
+        }
+
+        function changeProfilePicture() {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*';
+            fileInput.click();
+
+            fileInput.addEventListener('change', function() {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    const profile = document.querySelector('.profile');
+                    profile.style.backgroundImage = `url(${e.target.result})`;
+                    profile.style.backgroundSize = 'cover';
+                    profile.style.backgroundPosition = 'center';
+                };
+
+                reader.readAsDataURL(file);
+            });
         }
     </script>
 
