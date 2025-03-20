@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vegas Music</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Sidebar -->
@@ -16,6 +17,7 @@
             <button class="nav-button" id="homeButton"><i class="fas fa-home"></i> Início</button>
             <button class="nav-button" id="exploreButton"><i class="fas fa-search"></i> Explorar</button>
             <button class="nav-button" id="libraryButton"><i class="fas fa-bookmark"></i> Biblioteca</button>
+            <button class="nav-button" id="historyButton"><i class="fas fa-history"></i> Histórico</button>
             <button class="nav-button" id="settingsButton"><i class="fas fa-cog"></i> Configurações</button>
         </div>
     </div>
@@ -54,6 +56,18 @@
                 <p>Artista 2</p>
             </div>
         </section>
+
+        <!-- Music Player -->
+        <div class="player">
+            <div class="player-controls">
+                <button id="prevTrack" class="player-btn"><i class="fas fa-backward"></i></button>
+                <button id="playPause" class="player-btn"><i class="fas fa-play"></i></button>
+                <button id="nextTrack" class="player-btn"><i class="fas fa-forward"></i></button>
+            </div>
+            <div class="track-info">
+                <p id="trackTitle">Nome da Música</p>
+            </div>
+        </div>
     </div>
 
     <!-- Gaveta Lateral -->
