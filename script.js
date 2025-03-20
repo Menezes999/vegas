@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const changeProfilePicButton = document.getElementById('changeProfilePicButton');
     const changeNameButton = document.getElementById('changeNameButton');
     const settingsButton = document.getElementById('settingsButton');
-    
+
     let user = JSON.parse(localStorage.getItem('user')) || { name: 'Usuário', avatar: '' };
-    
+
     // Atualizar foto de perfil ou inicial
     if (user.avatar) {
         profileButton.style.background = `url(${user.avatar}) center/cover`;
@@ -16,12 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         profileButton.textContent = user.name.charAt(0).toUpperCase();
     }
-    
+
     // Abrir gaveta lateral
     profileButton.addEventListener('click', () => {
         sideDrawer.classList.toggle('open');
     });
-    
+
     // Alterar foto de perfil
     changeProfilePicButton.addEventListener('click', () => {
         let fileInput = document.createElement('input');
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         fileInput.click();
     });
-    
+
     // Fechar gaveta lateral
     const closeDrawer = document.getElementById('closeDrawer');
     closeDrawer.addEventListener('click', () => {
@@ -56,6 +56,21 @@ document.addEventListener('DOMContentLoaded', () => {
     closeSettingsPopup.addEventListener('click', () => {
         settingsPopup.classList.remove('active');
     });
-    
-});
 
+    // Função de navegação dos botões laterais
+    document.getElementById('homeButton').addEventListener('click', () => {
+        alert('Início');
+    });
+
+    document.getElementById('exploreButton').addEventListener('click', () => {
+        alert('Explorar');
+    });
+
+    document.getElementById('libraryButton').addEventListener('click', () => {
+        alert('Biblioteca');
+    });
+
+    document.getElementById('historyButton').addEventListener('click', () => {
+        alert('Histórico');
+    });
+});
