@@ -121,6 +121,31 @@ header {
     border-radius: 10px;
 }
 
+/* Music Player */
+.player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #181818;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player-controls button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 15px;
+}
+
+.track-info {
+    color: white;
+}
+
 /* Side Drawer */
 .side-drawer {
     position: fixed;
@@ -158,22 +183,27 @@ header {
     background-color: #333;
 }
 
-/* Popup for Settings */
+/* Pop-up */
 .popup {
-    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 400px;
     background-color: #181818;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    z-index: 101;
+    display: none;
+    z-index: 200;
 }
 
 .popup.active {
     display: block;
+}
+
+.popup-content h3 {
+    color: white;
+    margin-bottom: 20px;
 }
 
 .popup-content button {
