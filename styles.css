@@ -10,7 +10,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 220px;  /* Ajustando a largura da sidebar */
+    width: 240px;  /* Ajustando a largura da barra lateral */
     height: 100%;
     background-color: #181818;
     padding: 20px;
@@ -46,8 +46,9 @@ body {
 }
 
 .main-content {
-    margin-left: 240px;  /* Ajustando a margem da main content */
+    margin-left: 260px;  /* Ajustando a margem para a main content */
     padding: 20px;
+    z-index: 0;
 }
 
 header {
@@ -133,6 +134,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 200; /* Barra inferior em cima de tudo */
 }
 
 .player-controls button {
@@ -222,4 +224,30 @@ header {
 
 .popup-content button:hover {
     background-color: #333;
+}
+
+/* Barra Inferior */
+.player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #181818;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 200; /* Barra inferior em cima de tudo */
+}
+
+.track-info {
+    color: white;
+    flex-grow: 1;
+    text-align: left;
+    margin-left: 20px;
+}
+
+/* Ajuste para o player */
+.track-info {
+    margin-left: 15px;
 }
