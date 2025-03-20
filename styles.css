@@ -1,209 +1,126 @@
-/* Corpo principal */
+/* Corpo do site */
 body {
+    display: flex;
+    background: #121212; /* Fundo escuro */
+    color: white;
+    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #121212; /* Fundo escuro */
-    color: #e5e5e5; /* Texto claro */
-    font-family: 'Roboto', sans-serif;
-}
-
-/* Cabeçalho */
-header {
-    background-color: #181818;
-    color: #e5e5e5;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-header .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #03a9f4;
-}
-
-header .menu {
-    display: flex;
-    gap: 20px;
-    font-size: 16px;
-}
-
-header .menu a {
-    text-decoration: none;
-    color: #e5e5e5;
-    transition: 0.3s;
-}
-
-header .menu a:hover {
-    color: #03a9f4;
 }
 
 /* Barra lateral */
 .sidebar {
     width: 250px;
-    height: 100%;
-    background-color: #181818;
-    position: fixed;
-    top: 0;
+    background: #181818; /* Fundo escuro */
+    padding: 20px;
+    height: 100vh; /* 100% da altura da tela */
+    position: fixed; /* Fixa a barra lateral */
     left: 0;
-    padding-top: 80px;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 500;
+    top: 0;
 }
 
-.sidebar a {
+/* Título da barra lateral */
+.sidebar h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Botões da barra lateral */
+.sidebar button {
     display: block;
-    text-decoration: none;
-    color: #e5e5e5;
-    padding: 15px;
-    font-size: 16px;
-    transition: 0.3s;
+    width: 100%;
+    padding: 12px;
+    margin: 5px 0;
+    background: #282828; /* Fundo de botão escuro */
+    border: none;
+    color: white;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.sidebar a:hover {
-    background-color: #03a9f4;
-    color: white;
-}
-
-.sidebar .active {
-    background-color: #03a9f4;
-    color: white;
+.sidebar button:hover {
+    background: #333; /* Cor do botão ao passar o mouse */
 }
 
 /* Conteúdo principal */
-main {
-    margin-left: 250px;
-    margin-top: 80px;
-    padding: 30px;
-}
-
-h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.music-player {
-    background-color: #181818;
-    border-radius: 10px;
+.main-content {
+    margin-left: 270px; /* Espaço para a barra lateral */
+    flex: 1;
     padding: 20px;
-    margin-top: 40px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.music-player .controls {
+/* Cabeçalho fixo */
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 15px;
+    padding: 10px;
+    background: #181818; /* Fundo escuro */
+    border-radius: 10px;
 }
 
-.music-player button {
-    background-color: #03a9f4;
+/* Campo de busca no cabeçalho */
+header input {
+    width: 70%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Perfil do usuário no cabeçalho */
+.profile {
+    background: #282828;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
 }
 
-.music-player button:hover {
-    background-color: #0288d1;
-}
-
-.music-player .progress-bar {
-    width: 100%;
-    height: 5px;
-    background-color: #333;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-.music-player .progress-bar .progress {
-    height: 100%;
-    background-color: #03a9f4;
-    width: 50%; /* Ajuste para simular progresso */
-    border-radius: 5px;
-}
-
-/* Estilos para o Drawer (gaveta lateral de perfil) */
-#perfil-drawer {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #181818;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    padding: 20px;
-    box-shadow: -4px 0 6px rgba(0, 0, 0, 0.3);
-}
-
-#perfil-drawer.open {
-    transform: translateX(0);
-}
-
-#perfil-drawer .user-info {
-    margin-bottom: 20px;
-}
-
-#perfil-drawer .user-info p {
-    margin: 5px 0;
-    font-size: 16px;
-}
-
-#perfil-drawer .user-info .username {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* Playlist */
-.playlist {
+/* Carrossel de imagens (Stories) */
+.carousel {
     display: flex;
-    flex-direction: column;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none; /* Esconde a barra de rolagem */
+}
+
+/* Grid de conteúdo principal */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Grid responsivo */
     gap: 15px;
-    margin-top: 20px;
 }
 
-.playlist-item {
-    background-color: #333;
+/* Cartões para cada item */
+.card {
+    background: #282828;
     padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    text-align: center;
 }
 
-.playlist-item:hover {
-    background-color: #03a9f4;
+/* Imagens dos cartões */
+.card img {
+    width: 100%;
+    border-radius: 10px;
 }
 
-/* Ajuste para responsividade */
+/* Ajustes para quando a tela for pequena */
 @media (max-width: 768px) {
-    header .menu {
-        display: none;
-    }
-
     .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        padding-top: 20px;
+        width: 200px; /* Barra lateral mais estreita em telas menores */
     }
 
-    main {
-        margin-left: 0;
-        margin-top: 60px;
+    .main-content {
+        margin-left: 220px; /* Ajusta o espaço para a barra lateral */
     }
 
-    .music-player .controls {
-        flex-direction: column;
-        align-items: flex-start;
+    header input {
+        width: 60%; /* Ajuste no campo de busca */
     }
 }
