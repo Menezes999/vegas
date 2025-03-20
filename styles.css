@@ -1,157 +1,186 @@
-/* Corpo do site */
-body {
-    display: flex;
-    background: #121212; /* Fundo escuro */
-    color: white;
-    font-family: Arial, sans-serif;
+/* Estilos Gerais */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Barra lateral */
-.sidebar {
-    width: 250px;
-    background: #181818; /* Fundo escuro */
-    padding: 20px;
-    height: 100vh; /* 100% da altura da tela */
-    position: fixed; /* Fixa a barra lateral */
-    left: 0;
-    top: 0;
-}
-
-/* Título da barra lateral */
-.sidebar h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-/* Botões da barra lateral */
-.sidebar button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    margin: 5px 0;
-    background: #282828; /* Fundo de botão escuro */
-    border: none;
+body {
+    background-color: #121212; /* Fundo escuro */
+    font-family: 'Roboto', sans-serif;
     color: white;
-    text-align: left;
-    cursor: pointer;
-    border-radius: 5px;
+    display: flex;
+    height: 100vh;
 }
 
-.sidebar button:hover {
-    background: #333; /* Cor do botão ao passar o mouse */
-}
-
-/* Conteúdo principal */
-.main-content {
-    margin-left: 270px; /* Espaço para a barra lateral */
-    flex: 1;
-    padding: 20px;
-}
-
-/* Cabeçalho fixo */
+/* Cabeçalho */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #181818;
+    padding: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background: #181818; /* Fundo escuro */
-    border-radius: 10px;
+    z-index: 1000;
 }
 
-/* Campo de busca no cabeçalho */
-header input {
-    width: 70%;
-    padding: 10px;
+header input[type="text"] {
+    width: 60%;
+    padding: 12px;
+    background: #333;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
+    color: white;
+    font-size: 14px;
 }
 
-/* Perfil do usuário no cabeçalho */
-.profile {
-    background: #1E90FF; /* Azul */
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1DB954;
+}
+
+header .profile {
+    width: 40px;
+    height: 40px;
+    background-color: #1DB954;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+}
+
+/* Barra Lateral */
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 250px;
+    background-color: #181818;
+    height: calc(100vh - 60px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-right: 1px solid #333;
+}
+
+.sidebar button {
+    background-color: transparent;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 50%;
+    font-size: 18px;
     cursor: pointer;
-    position: relative;
+    text-align: left;
+    padding: 10px 20px;
+    width: 100%;
+    transition: background-color 0.3s ease;
 }
 
-/* Carrossel de imagens (Stories) */
+.sidebar button:hover {
+    background-color: #333;
+}
+
+.sidebar button.active {
+    background-color: #1DB954;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    margin-left: 270px;
+    padding: 80px 20px 20px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.section-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* Carrossel de Música (Popular, Novos Lançamentos, etc.) */
 .carousel {
     display: flex;
-    gap: 10px;
     overflow-x: auto;
+    gap: 15px;
     padding: 10px 0;
 }
 
 .carousel::-webkit-scrollbar {
-    display: none; /* Esconde a barra de rolagem */
+    display: none;
 }
 
-/* Grid de conteúdo principal */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Grid responsivo */
-    gap: 15px;
+.carousel img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-/* Cartões para cada item */
+.carousel img:hover {
+    transform: scale(1.05);
+}
+
+/* Cartões de Música */
 .card {
-    background: #282828;
-    padding: 10px;
+    background-color: #282828;
+    padding: 15px;
     border-radius: 10px;
     text-align: center;
+    width: 220px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Imagens dos cartões */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
 .card img {
     width: 100%;
     border-radius: 10px;
+    height: 150px;
+    object-fit: cover;
 }
 
-/* Tela de pop-ups (ex: configurações) */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: none; /* Inicialmente oculto */
-    z-index: 1000;
+.card p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ccc;
 }
 
-/* Pop-up principal */
-.popup {
-    background: #181818;
+/* Grid para conteúdo */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Rodapé */
+footer {
+    background-color: #181818;
     padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    margin: 50px auto;
-    position: relative;
+    text-align: center;
+    color: #ccc;
+    margin-top: 50px;
 }
 
-/* Fechar pop-up */
-.popup .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-/* Ajustes para quando a tela for pequena */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 200px; /* Barra lateral mais estreita em telas menores */
-    }
-
-    .main-content {
-        margin-left: 220px; /* Ajusta o espaço para a barra lateral */
-    }
-
-    header input {
-        width: 60%; /* Ajuste no campo de busca */
-    }
+footer a {
+    color: #1DB954;
+    text-decoration: none;
 }
