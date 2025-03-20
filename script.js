@@ -1,48 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Verifica se o usuário já está cadastrado
-    if (!localStorage.getItem('user')) {
-        let userName = prompt('Digite seu nome:');
-        let userPassword = prompt('Digite sua senha:');
-        localStorage.setItem('user', JSON.stringify({ name: userName, password: userPassword, avatar: '' }));
-    }
-
-    const user = JSON.parse(localStorage.getItem('user'));
     const profileButton = document.getElementById('profileButton');
     const sideDrawer = document.getElementById('sideDrawer');
     const settingsPopup = document.getElementById('settingsPopup');
+    const closeSettingsPopup = document.getElementById('closeSettingsPopup');
+    const changeProfilePicButton = document.getElementById('changeProfilePicButton');
+    const changeNameButton = document.getElementById('changeNameButton');
+    const settingsButton = document.getElementById('settingsButton');
     
-    // Atualiza a letra inicial no perfil
-    profileButton.textContent = user.name.charAt(0).toUpperCase();
+    let user = JSON.parse(localStorage.getItem('user')) || { name: 'Usuário', avatar: '' };
     
+    // Atualizar foto de perfil ou inicial
+    if (user.avatar) {
+        profileButton.style.background = `url(${user.avatar}) center/cover`;
+        profileButton.textContent = '';
+    } else {
+        profileButton.textContent = user.name.charAt(0).toUpperCase();
+    }
+    
+    // Abrir gaveta lateral
     profileButton.addEventListener('click', () => {
         sideDrawer.classList.toggle('open');
     });
-
-    // Configurações
-    const changeNameButton = document.getElementById('changeNameButton');
-    changeNameButton.addEventListener('click', () => {
-        const newName = prompt('Digite o novo nome:');
-        if (newName) {
-            user.name = newName;
-            localStorage.setItem('user', JSON.stringify(user));
-            profileButton.textContent = newName.charAt(0).toUpperCase();
-        }
-    });
-
-    // Mostrar pop-up de configurações
-    const settingsButton = document.getElementById('settingsButton');
-    settingsButton.addEventListener('click', () => {
-        settingsPopup.classList.add('active');
-    });
-
-    // Fechar pop-up de configurações
-    const closeSettingsPopup = document.getElementById('closeSettingsPopup');
-    closeSettingsPopup.addEventListener('click', () => {
-        settingsPopup.classList.remove('active');
-    });
-
+    
     // Alterar foto de perfil
-    const changeProfilePicButton = document.getElementById('changeProfilePicButton');
     changeProfilePicButton.addEventListener('click', () => {
         let fileInput = document.createElement('input');
         fileInput.type = 'file';
@@ -54,10 +34,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 user.avatar = reader.result;
                 localStorage.setItem('user', JSON.stringify(user));
                 profileButton.style.background = `url(${user.avatar}) center/cover`;
-                profileButton.textContent = ''; // Remove a letra quando há foto
+                profileButton.textContent = ''; 
             };
             reader.readAsDataURL(file);
         });
         fileInput.click();
     });
+    
+    // Fechar gaveta lateral
+    const closeDrawer = document.getElementById('closeDrawer');
+    closeDrawer.addEventListener('click', () => {
+        sideDrawer.classList.remove('open');
+    });
+
+    // Abrir popup de configurações
+    settingsButton.addEventListener('click', () => {
+        settingsPopup.classList.add('active');
+    });
+
+    // Fechar popup de configurações
+    closeSettingsPopup.addEventListener('click', () => {
+        settingsPopup.classList.remove('active');
+    });
+    
 });
+
