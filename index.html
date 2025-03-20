@@ -3,92 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vegas Music</title>
+    <title>Vegas</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo">
             <h1>Vegas</h1>
         </div>
-        <div class="sidebar-links">
-            <button class="nav-button" id="homeButton"><i class="fas fa-home"></i> Início</button>
-            <button class="nav-button" id="exploreButton"><i class="fas fa-search"></i> Explorar</button>
-            <button class="nav-button" id="libraryButton"><i class="fas fa-bookmark"></i> Biblioteca</button>
-            <button class="nav-button" id="historyButton"><i class="fas fa-history"></i> Histórico</button>
-            <button class="nav-button" id="settingsButton"><i class="fas fa-cog"></i> Configurações</button>
-        </div>
+        <button class="nav-button"><i class="fas fa-home"></i> Início</button>
+        <button class="nav-button"><i class="fas fa-search"></i> Explorar</button>
+        <button class="nav-button"><i class="fas fa-music"></i> Ouça Novamente</button>
+        <button class="nav-button"><i class="fas fa-cogs"></i> Configurações</button>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
         <header>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Buscar músicas, álbuns...">
+                <input type="text" placeholder="Pesquise por músicas, artistas, álbuns...">
             </div>
-            <div class="profile" id="profileButton">
-                A <!-- Inicial ou Foto -->
+            <div class="profile">
+                <!-- A primeira letra do nome será colocada aqui -->
             </div>
         </header>
 
-        <!-- Carrossel de Novidades -->
         <section class="carousel">
+            <!-- Carrossel de músicas -->
             <div class="carousel-item">
-                <img src="https://via.placeholder.com/300x200" alt="Album 1">
-                <p>Novos Lançamentos</p>
+                <img src="https://via.placeholder.com/300x150" alt="Música">
+                <p>Nome da Música</p>
             </div>
             <div class="carousel-item">
-                <img src="https://via.placeholder.com/300x200" alt="Album 2">
-                <p>Mais Ouvidas</p>
+                <img src="https://via.placeholder.com/300x150" alt="Música">
+                <p>Nome da Música</p>
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/300x150" alt="Música">
+                <p>Nome da Música</p>
             </div>
         </section>
 
-        <!-- Grid de Músicas -->
         <section class="grid">
+            <!-- Cartões de músicas -->
             <div class="card">
-                <img src="https://via.placeholder.com/150x150" alt="Artista 1">
-                <p>Artista 1</p>
+                <img src="https://via.placeholder.com/150" alt="Música">
+                <p>Nome da Música</p>
             </div>
             <div class="card">
-                <img src="https://via.placeholder.com/150x150" alt="Artista 2">
-                <p>Artista 2</p>
+                <img src="https://via.placeholder.com/150" alt="Música">
+                <p>Nome da Música</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/150" alt="Música">
+                <p>Nome da Música</p>
             </div>
         </section>
+    </div>
 
-        <!-- Music Player -->
-        <div class="player">
-            <div class="player-controls">
-                <button id="prevTrack" class="player-btn"><i class="fas fa-backward"></i></button>
-                <button id="playPause" class="player-btn"><i class="fas fa-play"></i></button>
-                <button id="nextTrack" class="player-btn"><i class="fas fa-forward"></i></button>
-            </div>
-            <div class="track-info">
-                <p id="trackTitle">Nome da Música</p>
-            </div>
+    <!-- Barra Inferior -->
+    <div class="player">
+        <div class="track-info">
+            <p>Nome da Música - Artista</p>
+        </div>
+        <div class="player-controls">
+            <button><i class="fas fa-backward"></i></button>
+            <button><i class="fas fa-play"></i></button>
+            <button><i class="fas fa-forward"></i></button>
         </div>
     </div>
 
-    <!-- Gaveta Lateral -->
-    <div class="side-drawer" id="sideDrawer">
+    <!-- Side Drawer (Gaveta Lateral) -->
+    <div class="side-drawer">
         <div class="drawer-content">
-            <button id="changeNameButton">Alterar Nome</button>
-            <button id="changeProfilePicButton">Alterar Foto de Perfil</button>
-            <button id="closeDrawer">Fechar</button>
+            <button>Alterar Nome</button>
+            <button>Alterar Foto de Perfil</button>
         </div>
     </div>
 
     <!-- Pop-up para Configurações -->
-    <div class="popup" id="settingsPopup">
+    <div class="popup" id="popup">
         <div class="popup-content">
             <h3>Configurações</h3>
-            <button id="changeQualityButton">Mudar Qualidade das Músicas</button>
-            <button id="changeNameButton">Trocar Nome da Conta</button>
-            <button id="closeSettingsPopup">Fechar</button>
+            <button>Alterar Qualidade da Música</button>
+            <button>Trocar Nome</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Verificar se o usuário está cadastrado (se o nome está no localStorage)
+        const username = localStorage.getItem('username');
+
+        // Se o nome do usuário estiver salvo no localStorage, atualizar o perfil
+        if (username) {
+            const profile = document.querySelector('.profile');
+            
+            // Pegar a primeira letra do nome do usuário
+            const profileInitial = username.charAt(0).toUpperCase();
+            
+            // Definir a primeira letra como conteúdo da foto de perfil
+            profile.innerHTML = profileInitial; 
+            
+            // Garantir que o perfil seja visível
+            profile.style.display = 'flex';  // Ajuste para garantir que o perfil aparece como um círculo com a letra
+        }
+    </script>
+
 </body>
 </html>
