@@ -6,64 +6,43 @@
     <title>Vegas</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
     <!-- Barra Lateral -->
     <aside class="sidebar">
-        <div class="logo">
-            <h1>Vegas</h1>
-        </div>
-        <button class="nav-button" id="inicioBtn"><i class="fas fa-home"></i> Início</button>
-        <button class="nav-button" id="explorarBtn"><i class="fas fa-compass"></i> Explorar</button>
-        <button class="nav-button" id="bibliotecaBtn"><i class="fas fa-book"></i> Biblioteca</button>
-        <button class="nav-button" id="configuracoesBtn"><i class="fas fa-cog"></i> Configurações</button>
+        <h1 class="logo">Vegas</h1>
+        <button class="nav-button"><i class="fas fa-home"></i> Início</button>
+        <button class="nav-button"><i class="fas fa-compass"></i> Explorar</button>
+        <button class="nav-button"><i class="fas fa-book"></i> Biblioteca</button>
+        <button class="nav-button"><i class="fas fa-cog"></i> Configurações</button>
     </aside>
 
     <!-- Conteúdo Principal -->
     <main class="main-content">
         <header>
-            <div class="search-container">
-                <input type="text" placeholder="Buscar músicas, artistas...">
-            </div>
+            <input type="text" placeholder="Buscar músicas, artistas..." class="search-bar">
             <div class="profile" id="profileBtn">
-                <span id="profileInitial">V</span>
+                <img id="profileImage" src="default.png" alt="Perfil">
             </div>
         </header>
 
         <section class="artists-section">
             <h2>Artistas em Destaque</h2>
             <div class="carousel">
-                <div class="carousel-item">
-                    <div class="artist-image"></div>
-                    <p>Artista 1</p>
-                </div>
-                <div class="carousel-item">
-                    <div class="artist-image"></div>
-                    <p>Artista 2</p>
-                </div>
-                <div class="carousel-item">
-                    <div class="artist-image"></div>
-                    <p>Artista 3</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="listen-again">
-            <h2>Ouça Novamente</h2>
-            <div class="grid">
-                <div class="card"><p>Música 1</p></div>
-                <div class="card"><p>Música 2</p></div>
-                <div class="card"><p>Música 3</p></div>
+                <div class="carousel-item">🎤 Artista 1</div>
+                <div class="carousel-item">🎸 Artista 2</div>
+                <div class="carousel-item">🎹 Artista 3</div>
             </div>
         </section>
 
         <section class="recommendations">
             <h2>Recomendações</h2>
             <div class="grid">
-                <div class="card"><p>Música A</p></div>
-                <div class="card"><p>Música B</p></div>
-                <div class="card"><p>Música C</p></div>
+                <div class="card">🎵 Música 1</div>
+                <div class="card">🎵 Música 2</div>
+                <div class="card">🎵 Música 3</div>
             </div>
         </section>
     </main>
@@ -72,16 +51,14 @@
     <div class="side-drawer" id="sideDrawer">
         <button class="close-drawer" id="closeDrawerBtn">X</button>
         <div class="drawer-content">
+            <input type="file" id="uploadPhoto">
             <button id="changeName">Mudar Nome</button>
-            <button id="changePhoto">Alterar Foto de Perfil</button>
         </div>
     </div>
 
     <!-- Barra de Reprodução -->
     <div class="player">
-        <div class="track-info">
-            <p id="currentTrack">Nome da Música - Artista</p>
-        </div>
+        <div class="track-info">🎶 Nome da Música - Artista</div>
         <div class="player-controls">
             <button id="prevBtn"><i class="fas fa-step-backward"></i></button>
             <button id="playPauseBtn"><i class="fas fa-play"></i></button>
