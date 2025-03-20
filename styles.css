@@ -46,9 +46,10 @@ body {
 }
 
 .main-content {
-    margin-left: 260px;  /* Ajustando a margem para a main content */
+    margin-left: 270px;  /* Ajustando para afastar mais o conteúdo da barra lateral */
     padding: 20px;
     z-index: 0;
+    margin-right: 30px; /* Ajustando para deslocar o conteúdo um pouco mais para a direita */
 }
 
 header {
@@ -62,7 +63,7 @@ header {
 }
 
 .search-container input {
-    width: 60%;
+    width: 75%;  /* Aumentando a largura da barra de pesquisa */
     padding: 10px;
     border-radius: 5px;
     background-color: #282828;
@@ -121,7 +122,6 @@ header {
     height: 150px;
     object-fit: cover;
     border-radius: 10px;
-}
 
 /* Music Player */
 .player {
