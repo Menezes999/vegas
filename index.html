@@ -100,7 +100,8 @@
     <script>
         // Verificar se o usuário está cadastrado (se o nome está no localStorage)
         const username = localStorage.getItem('username');
-        
+        const profileImage = localStorage.getItem('profileImage');  // Foto do perfil
+
         // Se o nome do usuário estiver salvo no localStorage, atualizar o perfil
         if (username) {
             const profile = document.querySelector('.profile');
@@ -109,10 +110,17 @@
             const profileInitial = username.charAt(0).toUpperCase();
             
             // Definir a primeira letra como conteúdo da foto de perfil
-            profile.innerHTML = profileInitial; 
-            
+            profile.innerHTML = profileInitial;
+
+            // Se a imagem de perfil estiver salva, mostrar a imagem
+            if (profileImage) {
+                profile.style.backgroundImage = `url(${profileImage})`;
+                profile.style.backgroundSize = 'cover';
+                profile.style.backgroundPosition = 'center';
+            }
+
             // Garantir que o perfil seja visível
-            profile.style.display = 'flex';  // Ajuste para garantir que o perfil aparece como um círculo com a letra
+            profile.style.display = 'flex';
         }
 
         // Função para alternar entre Play/Pause
@@ -174,6 +182,9 @@
                     profile.style.backgroundImage = `url(${e.target.result})`;
                     profile.style.backgroundSize = 'cover';
                     profile.style.backgroundPosition = 'center';
+                    
+                    // Salvar a imagem no localStorage
+                    localStorage.setItem('profileImage', e.target.result);
                 };
 
                 reader.readAsDataURL(file);
