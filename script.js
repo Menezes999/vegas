@@ -1,4 +1,13 @@
-// Funções para abrir e fechar pop-ups
+// Função para verificar se o usuário já foi cadastrado
+window.onload = function() {
+    if (!localStorage.getItem('userName')) {
+        window.location.href = "cadastro.html"; // Redireciona para o cadastro
+    } else {
+        openProfile();
+    }
+};
+
+// Função para abrir pop-ups de configurações
 function openSettings() {
     document.getElementById('overlay').style.display = 'block';
 }
@@ -27,24 +36,54 @@ function closeAccountSettings() {
 function saveNewName() {
     let oldName = document.getElementById('oldName').value;
     let newName = document.getElementById('newName').value;
-    // Simulação de salvar no localStorage
     localStorage.setItem('userName', newName);
     alert("Nome alterado com sucesso!");
     closeAccountSettings();
+    openProfile();
 }
 
 // Função para o perfil
 function openProfile() {
     let userName = localStorage.getItem('userName') || 'M';
     document.querySelector('.profile').textContent = userName.charAt(0);
-    // Aqui você pode adicionar mais lógica para alterar a foto de perfil
+
+    // Verifica se a foto de perfil está no localStorage
+    if (localStorage.getItem('profilePicture')) {
+        document.querySelector('.profile').style.backgroundImage = `url(${localStorage.getItem('profilePicture')})`;
+        document.querySelector('.profile').style.backgroundSize = 'cover';
+    }
 }
 
-// Funções de Navegação (explorar, biblioteca)
+// Função para carregar foto de perfil
+document.querySelector('.profile').addEventListener('click', function() {
+    let fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+
+    fileInput.addEventListener('change', function(event) {
+        let file = event.target.files[0];
+        if (file) {
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                let imgUrl = e.target.result;
+                localStorage.setItem('profilePicture', imgUrl);
+                openProfile(); // Atualiza o perfil
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+    fileInput.click();
+});
+
+// Função para navegação (explorar, biblioteca)
 function openStories() {
     alert('Explorando músicas...');
 }
 
 function openLibrary() {
     alert('Abrindo Biblioteca...');
+    let createPlaylistButton = document.createElement('button');
+    createPlaylistButton.textContent = 'Criar Playlist';
+    document.body.appendChild(createPlaylistButton);
 }
+
