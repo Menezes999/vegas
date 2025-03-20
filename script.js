@@ -1,80 +1,50 @@
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("Vegas Music carregado!");
+// Funções para abrir e fechar pop-ups
+function openSettings() {
+    document.getElementById('overlay').style.display = 'block';
+}
 
-    // Verifica se o usuário já está cadastrado, se não, forçar cadastro
-    if (!localStorage.getItem("user")) {
-        let userName = prompt("Digite seu nome:");
-        let userPassword = prompt("Digite sua senha:");
-        localStorage.setItem("user", JSON.stringify({ name: userName, password: userPassword, avatar: "" }));
-    }
+function closeSettings() {
+    document.getElementById('overlay').style.display = 'none';
+}
 
-    const user = JSON.parse(localStorage.getItem("user"));
-    const profileButton = document.querySelector(".profile");
-    profileButton.textContent = user.avatar ? "" : user.name.charAt(0).toUpperCase();
-    profileButton.style.background = user.avatar ? `url(${user.avatar}) center/cover` : "blue";
+function openQualitySettings() {
+    document.getElementById('qualityOverlay').style.display = 'block';
+}
 
-    // Upload de foto de perfil
-    profileButton.addEventListener("click", () => {
-        let fileInput = document.createElement("input");
-        fileInput.type = "file";
-        fileInput.accept = "image/*";
-        fileInput.addEventListener("change", (event) => {
-            let file = event.target.files[0];
-            let reader = new FileReader();
-            reader.onload = () => {
-                user.avatar = reader.result;
-                localStorage.setItem("user", JSON.stringify(user));
-                profileButton.style.background = `url(${user.avatar}) center/cover`;
-                profileButton.textContent = "";
-            };
-            reader.readAsDataURL(file);
-        });
-        fileInput.click();
-    });
+function closeQualitySettings() {
+    document.getElementById('qualityOverlay').style.display = 'none';
+}
 
-    // Navegação
-    document.getElementById("home-btn").addEventListener("click", () => {
-        window.location.href = "index.html";
-    });
+function openAccountSettings() {
+    document.getElementById('accountOverlay').style.display = 'block';
+}
 
-    document.getElementById("explore-btn").addEventListener("click", () => {
-        alert("Explorar: Em breve stories musicais!");
-    });
+function closeAccountSettings() {
+    document.getElementById('accountOverlay').style.display = 'none';
+}
 
-    document.getElementById("library-btn").addEventListener("click", () => {
-        alert("Criar playlist e salvar músicas em breve!");
-    });
+// Função para salvar o novo nome de conta
+function saveNewName() {
+    let oldName = document.getElementById('oldName').value;
+    let newName = document.getElementById('newName').value;
+    // Simulação de salvar no localStorage
+    localStorage.setItem('userName', newName);
+    alert("Nome alterado com sucesso!");
+    closeAccountSettings();
+}
 
-    document.getElementById("settings-btn").addEventListener("click", () => {
-        document.getElementById("settings-popup").style.display = "block";
-    });
+// Função para o perfil
+function openProfile() {
+    let userName = localStorage.getItem('userName') || 'M';
+    document.querySelector('.profile').textContent = userName.charAt(0);
+    // Aqui você pode adicionar mais lógica para alterar a foto de perfil
+}
 
-    document.getElementById("close-popup").addEventListener("click", () => {
-        document.getElementById("settings-popup").style.display = "none";
-    });
+// Funções de Navegação (explorar, biblioteca)
+function openStories() {
+    alert('Explorando músicas...');
+}
 
-    // Histórico de músicas
-    let history = JSON.parse(localStorage.getItem("history")) || [];
-    function saveToHistory(song) {
-        if (!history.includes(song)) {
-            history.push(song);
-            localStorage.setItem("history", JSON.stringify(history));
-        }
-    }
-
-    // Preencher histórico
-    const historyContainer = document.getElementById("history");
-    history.forEach(song => {
-        const songDiv = document.createElement("div");
-        songDiv.textContent = song;
-        historyContainer.appendChild(songDiv);
-    });
-
-    // Recomendações
-    document.querySelectorAll(".card img").forEach((img, index) => {
-        img.addEventListener("click", () => {
-            saveToHistory(img.alt);
-            alert(`Tocando: ${img.alt}`);
-        });
-    });
-});
+function openLibrary() {
+    alert('Abrindo Biblioteca...');
+}
