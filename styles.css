@@ -15,11 +15,13 @@ body {
     position: fixed;
     left: 0;
     top: 0;
+    transition: width 0.3s ease-in-out;
 }
 
 .sidebar h1 {
     font-size: 24px;
     margin-bottom: 20px;
+    color: #fff;
 }
 
 .sidebar button {
@@ -43,6 +45,7 @@ body {
     margin-left: 270px;
     flex: 1;
     padding: 20px;
+    transition: margin-left 0.3s ease;
 }
 
 header {
@@ -54,11 +57,13 @@ header {
     border-radius: 10px;
 }
 
-header input {
+header .search-container input {
     width: 70%;
     padding: 10px;
     border: none;
     border-radius: 5px;
+    background: #282828;
+    color: white;
 }
 
 .profile {
