@@ -1,196 +1,93 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vegas</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Font Awesome -->
+    <script defer src="script.js"></script>
 </head>
 <body>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
+    <!-- Barra Lateral -->
+    <aside class="sidebar">
         <div class="logo">
             <h1>Vegas</h1>
         </div>
-        <button class="nav-button"><i class="fas fa-home"></i> Início</button>
-        <button class="nav-button"><i class="fas fa-search"></i> Explorar</button>
-        <button class="nav-button"><i class="fas fa-music"></i> Ouça Novamente</button>
-        <button class="nav-button"><i class="fas fa-cogs"></i> Configurações</button>
-    </div>
+        <button class="nav-button" id="inicioBtn"><i class="fas fa-home"></i> Início</button>
+        <button class="nav-button" id="explorarBtn"><i class="fas fa-compass"></i> Explorar</button>
+        <button class="nav-button" id="bibliotecaBtn"><i class="fas fa-book"></i> Biblioteca</button>
+        <button class="nav-button" id="configuracoesBtn"><i class="fas fa-cog"></i> Configurações</button>
+    </aside>
 
-    <!-- Main Content -->
-    <div class="main-content" onclick="closeSideDrawer(event)">
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
         <header>
             <div class="search-container">
-                <input type="text" placeholder="Pesquise por músicas, artistas, álbuns...">
+                <input type="text" placeholder="Buscar músicas, artistas...">
             </div>
-            <div class="profile" onclick="toggleSideDrawer()">
-                <!-- A primeira letra do nome será colocada aqui -->
+            <div class="profile" id="profileBtn">
+                <span id="profileInitial">V</span>
             </div>
         </header>
 
-        <section class="carousel">
-            <!-- Carrossel de músicas -->
-            <div class="carousel-item">
-                <img src="https://via.placeholder.com/300x150" alt="Música">
-                <p>Nome da Música</p>
-            </div>
-            <div class="carousel-item">
-                <img src="https://via.placeholder.com/300x150" alt="Música">
-                <p>Nome da Música</p>
-            </div>
-            <div class="carousel-item">
-                <img src="https://via.placeholder.com/300x150" alt="Música">
-                <p>Nome da Música</p>
+        <section class="artists-section">
+            <h2>Artistas em Destaque</h2>
+            <div class="carousel">
+                <div class="carousel-item">
+                    <div class="artist-image"></div>
+                    <p>Artista 1</p>
+                </div>
+                <div class="carousel-item">
+                    <div class="artist-image"></div>
+                    <p>Artista 2</p>
+                </div>
+                <div class="carousel-item">
+                    <div class="artist-image"></div>
+                    <p>Artista 3</p>
+                </div>
             </div>
         </section>
 
-        <section class="grid">
-            <!-- Cartões de músicas -->
-            <div class="card">
-                <img src="https://via.placeholder.com/150" alt="Música">
-                <p>Nome da Música</p>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/150" alt="Música">
-                <p>Nome da Música</p>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/150" alt="Música">
-                <p>Nome da Música</p>
+        <section class="listen-again">
+            <h2>Ouça Novamente</h2>
+            <div class="grid">
+                <div class="card"><p>Música 1</p></div>
+                <div class="card"><p>Música 2</p></div>
+                <div class="card"><p>Música 3</p></div>
             </div>
         </section>
+
+        <section class="recommendations">
+            <h2>Recomendações</h2>
+            <div class="grid">
+                <div class="card"><p>Música A</p></div>
+                <div class="card"><p>Música B</p></div>
+                <div class="card"><p>Música C</p></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Gaveta Lateral do Perfil -->
+    <div class="side-drawer" id="sideDrawer">
+        <button class="close-drawer" id="closeDrawerBtn">X</button>
+        <div class="drawer-content">
+            <button id="changeName">Mudar Nome</button>
+            <button id="changePhoto">Alterar Foto de Perfil</button>
+        </div>
     </div>
 
-    <!-- Barra Inferior (Player) -->
+    <!-- Barra de Reprodução -->
     <div class="player">
         <div class="track-info">
-            <p id="track-name">Nome da Música - Artista</p>
+            <p id="currentTrack">Nome da Música - Artista</p>
         </div>
         <div class="player-controls">
-            <button onclick="previousTrack()"><i class="fas fa-backward"></i></button>
-            <button onclick="togglePlayPause()"><i id="play-pause-icon" class="fas fa-play"></i></button>
-            <button onclick="nextTrack()"><i class="fas fa-forward"></i></button>
-            <button><i class="fas fa-volume-up"></i></button> <!-- Ícone de volume -->
+            <button id="prevBtn"><i class="fas fa-step-backward"></i></button>
+            <button id="playPauseBtn"><i class="fas fa-play"></i></button>
+            <button id="nextBtn"><i class="fas fa-step-forward"></i></button>
         </div>
     </div>
-
-    <!-- Side Drawer (Gaveta Lateral) -->
-    <div class="side-drawer" id="side-drawer">
-        <div class="drawer-header">
-            <button onclick="toggleSideDrawer()" class="close-btn"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="drawer-content">
-            <button onclick="changeName()">Alterar Nome</button>
-            <button onclick="changeProfilePicture()">Alterar Foto de Perfil</button>
-        </div>
-    </div>
-
-    <!-- Pop-up para Configurações -->
-    <div class="popup" id="popup">
-        <div class="popup-content">
-            <h3>Configurações</h3>
-            <button>Alterar Qualidade da Música</button>
-            <button>Trocar Nome</button>
-        </div>
-    </div>
-
-    <script>
-        // Verificar se o usuário está cadastrado (se o nome está no localStorage)
-        const username = localStorage.getItem('username');
-        const profileImage = localStorage.getItem('profileImage');  // Foto do perfil
-
-        // Se o nome do usuário estiver salvo no localStorage, atualizar o perfil
-        if (username) {
-            const profile = document.querySelector('.profile');
-            
-            // Pegar a primeira letra do nome do usuário
-            const profileInitial = username.charAt(0).toUpperCase();
-            
-            // Definir a primeira letra como conteúdo da foto de perfil
-            profile.innerHTML = profileInitial;
-
-            // Se a imagem de perfil estiver salva, mostrar a imagem
-            if (profileImage) {
-                profile.style.backgroundImage = `url(${profileImage})`;
-                profile.style.backgroundSize = 'cover';
-                profile.style.backgroundPosition = 'center';
-            }
-
-            // Garantir que o perfil seja visível
-            profile.style.display = 'flex';
-        }
-
-        // Função para alternar entre Play/Pause
-        function togglePlayPause() {
-            const playPauseIcon = document.getElementById('play-pause-icon');
-            if (playPauseIcon.classList.contains('fa-play')) {
-                playPauseIcon.classList.remove('fa-play');
-                playPauseIcon.classList.add('fa-pause');
-            } else {
-                playPauseIcon.classList.remove('fa-pause');
-                playPauseIcon.classList.add('fa-play');
-            }
-        }
-
-        // Funções para mudar a música (simulação)
-        function nextTrack() {
-            alert('Música avançada!');
-        }
-
-        function previousTrack() {
-            alert('Música retrocedida!');
-        }
-
-        // Função para mostrar a gaveta lateral
-        function toggleSideDrawer() {
-            const drawer = document.getElementById('side-drawer');
-            drawer.classList.toggle('open');
-        }
-
-        // Fechar a gaveta lateral ao clicar fora dela
-        function closeSideDrawer(event) {
-            const drawer = document.getElementById('side-drawer');
-            if (drawer.classList.contains('open') && !drawer.contains(event.target) && !event.target.closest('.profile')) {
-                drawer.classList.remove('open');
-            }
-        }
-
-        // Funções para alterar nome e foto de perfil
-        function changeName() {
-            const newName = prompt('Digite o novo nome:');
-            if (newName) {
-                localStorage.setItem('username', newName);
-                location.reload(); // Atualiza a página para refletir o novo nome
-            }
-        }
-
-        function changeProfilePicture() {
-            const fileInput = document.createElement('input');
-            fileInput.type = 'file';
-            fileInput.accept = 'image/*';
-            fileInput.click();
-
-            fileInput.addEventListener('change', function() {
-                const file = fileInput.files[0];
-                const reader = new FileReader();
-
-                reader.onload = function(e) {
-                    const profile = document.querySelector('.profile');
-                    profile.style.backgroundImage = `url(${e.target.result})`;
-                    profile.style.backgroundSize = 'cover';
-                    profile.style.backgroundPosition = 'center';
-                    
-                    // Salvar a imagem no localStorage
-                    localStorage.setItem('profileImage', e.target.result);
-                };
-
-                reader.readAsDataURL(file);
-            });
-        }
-    </script>
 
 </body>
 </html>
