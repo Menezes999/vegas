@@ -7,23 +7,31 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="cadastro">
-        <h2>Cadastro</h2>
-        <form id="cadastroForm">
-            <input type="text" id="nome" placeholder="Digite seu nome" required />
-            <input type="password" id="senha" placeholder="Digite sua senha" required />
+    <div class="main-content">
+        <h1>Cadastro</h1>
+        <form id="registrationForm">
+            <label for="userName">Nome de usuário:</label>
+            <input type="text" id="userName" placeholder="Seu nome">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" placeholder="Sua senha">
             <button type="submit">Cadastrar</button>
         </form>
     </div>
 
     <script>
-        document.getElementById('cadastroForm').addEventListener('submit', function (e) {
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const nome = document.getElementById('nome').value;
-            const senha = document.getElementById('senha').value;
-            localStorage.setItem('nome', nome);
-            localStorage.setItem('senha', senha);
-            window.location.href = 'index.html'; // Redireciona para a página principal
+
+            const userName = document.getElementById('userName').value;
+            const password = document.getElementById('password').value;
+
+            if (userName && password) {
+                localStorage.setItem('userName', userName);
+                localStorage.setItem('password', password); // Para futura implementação de login
+                window.location.href = "index.html"; // Redireciona para o site principal
+            } else {
+                alert('Preencha todos os campos!');
+            }
         });
     </script>
 </body>
