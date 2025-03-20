@@ -17,9 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
     profileButton.textContent = firstLetter;
     profileButton.style.background = "#282828";  // Cor de fundo do círculo
     profileButton.style.color = "white";
-    profileButton.style.borderRadius = "50%";
-    profileButton.style.width = "40px";
-    profileButton.style.height = "40px";
 
     // Elementos da gaveta lateral
     const sideDrawer = document.getElementById("sideDrawer");
