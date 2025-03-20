@@ -233,3 +233,74 @@ header {
 .track-info {
     margin-left: 15px;
 }
+
+/* Estilo para a página de cadastro */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212;
+}
+
+.signup-card {
+    background-color: #181818;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.signup-card h1 {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.signup-card p {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    color: white;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #282828;
+    color: white;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border: 1px solid #1DB954;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background-color: #1DB954;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #1ed760;
+}
