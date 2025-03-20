@@ -11,10 +11,10 @@
     <!-- Barra Lateral -->
     <div class="sidebar">
         <h1>Music App</h1>
-        <button>Início</button>
-        <button>Explorar</button>
-        <button>Biblioteca</button>
-        <button>Configurações</button>
+        <button onclick="window.location.href='index.html'">Início</button>
+        <button onclick="openStories()">Explorar</button>
+        <button onclick="openLibrary()">Biblioteca</button>
+        <button onclick="openSettings()">Configurações</button>
     </div>
 
     <!-- Conteúdo Principal -->
@@ -22,7 +22,7 @@
         <!-- Cabeçalho -->
         <header>
             <input type="text" placeholder="Buscar músicas, artistas...">
-            <button class="profile">Perfil</button>
+            <button class="profile" onclick="openProfile()">M</button> <!-- Inicialmente 'M' é a inicial do nome -->
         </header>
 
         <!-- Carrossel de Stories -->
@@ -49,5 +49,36 @@
         </div>
     </div>
 
+    <!-- Overlay e Pop-up de Configurações -->
+    <div class="overlay" id="overlay">
+        <div class="popup">
+            <span class="close" onclick="closeSettings()">X</span>
+            <h3>Configurações</h3>
+            <button onclick="openQualitySettings()">Mudar qualidade das músicas</button>
+            <button onclick="openAccountSettings()">Trocar nome da conta</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="qualityOverlay">
+        <div class="popup">
+            <span class="close" onclick="closeQualitySettings()">X</span>
+            <h3>Escolha a qualidade</h3>
+            <button>320 kbps</button>
+            <button>128 kbps</button>
+            <button>192 kbps</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="accountOverlay">
+        <div class="popup">
+            <span class="close" onclick="closeAccountSettings()">X</span>
+            <h3>Trocar nome da conta</h3>
+            <input type="text" id="oldName" placeholder="Nome antigo">
+            <input type="text" id="newName" placeholder="Novo nome">
+            <button onclick="saveNewName()">Salvar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
