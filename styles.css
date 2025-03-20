@@ -1,12 +1,13 @@
-/* Global Styles */
+/* Estilos globais */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     background-color: #121212;
     color: white;
-    padding-bottom: 60px; /* Deixando espaço para a barra inferior */
+    padding-bottom: 60px; /* Para deixar espaço para a barra inferior */
 }
 
+/* Sidebar */
 .sidebar {
     position: fixed;
     top: 0;
@@ -46,8 +47,9 @@ body {
     border-radius: 5px;
 }
 
+/* Conteúdo principal */
 .main-content {
-    margin-left: 270px;  /* Ajustando para afastar mais o conteúdo da sidebar */
+    margin-left: 270px; /* Ajustado para afastar mais o conteúdo da sidebar */
     padding: 20px;
 }
 
@@ -82,44 +84,7 @@ header {
     background-color: #555;
 }
 
-.carousel {
-    display: flex;
-    gap: 20px;
-}
-
-.carousel-item img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.grid {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.card {
-    width: 150px;
-    height: 200px;
-    background-color: #333;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.card img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.card p {
-    color: white;
-    margin-top: 10px;
-}
-
+/* Barra Inferior (Player) */
 .player {
     position: fixed;
     bottom: 0;
@@ -133,8 +98,15 @@ header {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
 }
 
+/* Estilos do nome da faixa */
 .track-info {
     color: white;
+}
+
+/* Controles do player */
+.player-controls {
+    display: flex;
+    align-items: center;
 }
 
 .player-controls button {
@@ -142,7 +114,9 @@ header {
     color: white;
     border: none;
     padding: 10px;
+    font-size: 18px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .player-controls button:hover {
@@ -150,6 +124,7 @@ header {
     border-radius: 5px;
 }
 
+/* Gaveta lateral (Perfil) */
 .side-drawer {
     position: fixed;
     top: 0;
@@ -160,15 +135,19 @@ header {
     padding: 20px;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
     transition: 0.3s;
+    z-index: 200;
 }
 
+/* Quando a gaveta lateral estiver aberta */
 .side-drawer.open {
     right: 0;
 }
 
+/* Botão de fechar (X) */
 .drawer-header {
     display: flex;
     justify-content: flex-end;
+    padding-bottom: 10px;
 }
 
 .close-btn {
@@ -177,8 +156,14 @@ header {
     border: none;
     font-size: 24px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
+.close-btn:hover {
+    color: red;
+}
+
+/* Botões dentro da gaveta lateral */
 .drawer-content button {
     background-color: transparent;
     color: white;
@@ -187,6 +172,9 @@ header {
     margin: 10px 0;
     cursor: pointer;
     transition: 0.3s;
+    display: block;
+    width: 100%;
+    text-align: left;
 }
 
 .drawer-content button:hover {
