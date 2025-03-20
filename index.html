@@ -9,11 +9,15 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <h1>Vegas</h1>
-        <button id="homeButton">Início</button>
-        <button id="exploreButton">Explorar</button>
-        <button id="libraryButton">Biblioteca</button>
-        <button id="settingsButton">Configurações</button>
+        <div class="logo">
+            <h1>Vegas</h1>
+        </div>
+        <div class="sidebar-links">
+            <button id="homeButton">Início</button>
+            <button id="exploreButton">Explorar</button>
+            <button id="libraryButton">Biblioteca</button>
+            <button id="settingsButton">Configurações</button>
+        </div>
     </div>
 
     <!-- Main Content -->
@@ -23,30 +27,44 @@
                 <input type="text" placeholder="Pesquisar músicas, álbuns...">
             </div>
             <div class="profile" id="profileButton">
-                A
+                A <!-- Inicial ou Foto -->
             </div>
         </header>
 
-        <div class="carousel">
-            <!-- Carrossel de Músicas ou Conteúdo -->
-            <div class="card"><img src="https://via.placeholder.com/150" alt="Album"></div>
-            <div class="card"><img src="https://via.placeholder.com/150" alt="Album"></div>
-            <div class="card"><img src="https://via.placeholder.com/150" alt="Album"></div>
-        </div>
+        <!-- Carrossel de conteúdo -->
+        <section class="carousel">
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/300x200" alt="Album 1">
+                <p>Album 1</p>
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/300x200" alt="Album 2">
+                <p>Album 2</p>
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/300x200" alt="Album 3">
+                <p>Album 3</p>
+            </div>
+        </section>
 
-        <div class="grid">
+        <!-- Grid de artistas ou músicas -->
+        <section class="grid">
             <div class="card">
-                <img src="https://via.placeholder.com/150" alt="Artista">
-                <p>Nome do Artista</p>
+                <img src="https://via.placeholder.com/150x150" alt="Artista 1">
+                <p>Artista 1</p>
             </div>
             <div class="card">
-                <img src="https://via.placeholder.com/150" alt="Artista">
-                <p>Nome do Artista</p>
+                <img src="https://via.placeholder.com/150x150" alt="Artista 2">
+                <p>Artista 2</p>
             </div>
-        </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/150x150" alt="Artista 3">
+                <p>Artista 3</p>
+            </div>
+        </section>
     </div>
 
-    <!-- Gaveta Lateral (Side Drawer) -->
+    <!-- Gaveta Lateral -->
     <div class="side-drawer" id="sideDrawer">
         <div class="drawer-content">
             <button id="changeNameButton">Mudar Nome</button>
@@ -55,6 +73,7 @@
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
