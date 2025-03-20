@@ -4,6 +4,7 @@ body {
     margin: 0;
     background-color: #121212;
     color: white;
+    padding-bottom: 60px; /* Deixando espaço para a barra inferior */
 }
 
 .sidebar {
@@ -122,19 +123,21 @@ header {
     height: 150px;
     object-fit: cover;
     border-radius: 10px;
+}
 
-/* Music Player */
+/* Barra Inferior */
 .player {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     background-color: #181818;
-    padding: 10px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 200; /* Barra inferior em cima de tudo */
+    box-shadow: 0px -3px 15px rgba(0, 0, 0, 0.5); /* Adicionando sombra para destacar */
 }
 
 .player-controls button {
@@ -224,27 +227,6 @@ header {
 
 .popup-content button:hover {
     background-color: #333;
-}
-
-/* Barra Inferior */
-.player {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #181818;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 200; /* Barra inferior em cima de tudo */
-}
-
-.track-info {
-    color: white;
-    flex-grow: 1;
-    text-align: left;
-    margin-left: 20px;
 }
 
 /* Ajuste para o player */
