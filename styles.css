@@ -1,136 +1,58 @@
-/* styles.css */
+/* Layout e estilos básicos */
 body {
-    display: flex;
-    background: #121212;
-    color: white;
     font-family: Arial, sans-serif;
     margin: 0;
+    padding: 0;
 }
 
-.sidebar {
-    width: 250px;
-    background: #181818;
-    padding: 20px;
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-}
-
-.sidebar h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.sidebar button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    margin: 5px 0;
-    background: #282828;
-    border: none;
+#header {
+    background-color: #333;
     color: white;
-    text-align: left;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.sidebar button:hover {
-    background: #333;
-}
-
-.main-content {
-    margin-left: 270px;
-    flex: 1;
-    padding: 20px;
-}
-
-header {
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background: #181818;
-    border-radius: 10px;
 }
 
-header input {
-    width: 70%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-}
-
-.profile {
-    background: blue;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 50%;
-    cursor: pointer;
+#perfil {
     width: 40px;
     height: 40px;
-}
-
-.carousel {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding: 10px 0;
-}
-
-.carousel::-webkit-scrollbar {
-    display: none;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
-}
-
-.card {
-    background: #282828;
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.card img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.artist-photo {
-    width: 80px;
-    height: 80px;
+    background-color: #007BFF;
+    color: white;
     border-radius: 50%;
-    background: #333;
-    margin: 0 auto;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-.popup {
+#main-content {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.menu a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#popupQualidade, #popupTrocarNome {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #181818;
+    background-color: white;
     padding: 20px;
     border-radius: 10px;
-    z-index: 10;
 }
 
-.popup-content {
-    text-align: center;
+.popup.open {
+    display: block;
 }
 
-#close-popup {
-    background: #333;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.popup-content button {
+    margin-top: 10px;
 }
