@@ -10,28 +10,49 @@
     <div class="sidebar">
         <h1>Vegas</h1>
         <nav>
-            <button>Início</button>
-            <button>Explorar</button>
-            <button>Biblioteca</button>
-            <button>Playlists</button>
+            <button id="home-btn">Início</button>
+            <button id="explore-btn">Explorar</button>
+            <button id="library-btn">Biblioteca</button>
+            <button id="settings-btn">Configurações</button>
         </nav>
     </div>
     <div class="main-content">
         <header>
             <input type="text" placeholder="Buscar músicas, artistas...">
-            <button class="profile">Perfil</button>
+            <button class="profile">P</button>
         </header>
-        <h2>Destaques</h2>
+        <h2>Artistas</h2>
         <div class="carousel">
+            <div class="card">
+                <div class="artist-photo"></div>
+                <p>Artista 1</p>
+            </div>
+            <div class="card">
+                <div class="artist-photo"></div>
+                <p>Artista 2</p>
+            </div>
+            <div class="card">
+                <div class="artist-photo"></div>
+                <p>Artista 3</p>
+            </div>
+        </div>
+        <h2>Ouça Novamente</h2>
+        <div class="grid" id="history">
+            <!-- Histórico de músicas será carregado aqui -->
+        </div>
+        <h2>Recomendações</h2>
+        <div class="grid">
             <div class="card"><img src="img1.jpg" alt="Música 1"></div>
             <div class="card"><img src="img2.jpg" alt="Música 2"></div>
             <div class="card"><img src="img3.jpg" alt="Música 3"></div>
         </div>
-        <h2>Recomendações</h2>
-        <div class="grid">
-            <div class="card"><img src="img4.jpg" alt="Música 4"></div>
-            <div class="card"><img src="img5.jpg" alt="Música 5"></div>
-            <div class="card"><img src="img6.jpg" alt="Música 6"></div>
+    </div>
+    <div id="settings-popup" class="popup">
+        <div class="popup-content">
+            <h2>Configurações</h2>
+            <p>Mudar qualidade das músicas</p>
+            <p>Trocar nome da conta</p>
+            <button id="close-popup">Fechar</button>
         </div>
     </div>
     <script src="script.js"></script>
