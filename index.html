@@ -3,84 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music App</title>
+    <title>YouMusic</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">YouMusic</div>
+        <input type="text" placeholder="Buscar músicas, artistas...">
+        <div class="profile" onclick="openProfile()">M</div>
+    </header>
+
     <!-- Barra Lateral -->
     <div class="sidebar">
-        <h1>Music App</h1>
-        <button onclick="window.location.href='index.html'">Início</button>
-        <button onclick="openStories()">Explorar</button>
-        <button onclick="openLibrary()">Biblioteca</button>
-        <button onclick="openSettings()">Configurações</button>
+        <button class="active" onclick="openSection('home')">Início</button>
+        <button onclick="openSection('explore')">Explorar</button>
+        <button onclick="openSection('library')">Biblioteca</button>
+        <button onclick="openSection('settings')">Configurações</button>
     </div>
 
     <!-- Conteúdo Principal -->
     <div class="main-content">
-        <!-- Cabeçalho -->
-        <header>
-            <input type="text" placeholder="Buscar músicas, artistas...">
-            <button class="profile" onclick="openProfile()">
-                M
-            </button> <!-- Inicialmente 'M' é a inicial do nome -->
-        </header>
-
-        <!-- Carrossel de Stories -->
-        <div class="carousel">
-            <img src="image1.jpg" alt="Imagem 1" width="150">
-            <img src="image2.jpg" alt="Imagem 2" width="150">
-            <img src="image3.jpg" alt="Imagem 3" width="150">
-        </div>
-
-        <!-- Grid de Conteúdo -->
-        <div class="grid">
-            <div class="card">
+        <section id="home">
+            <h1>Bem-vindo de volta!</h1>
+            <h2 class="section-title">Novos Lançamentos</h2>
+            <div class="carousel">
                 <img src="album1.jpg" alt="Album 1">
-                <p>Nome do Album</p>
-            </div>
-            <div class="card">
                 <img src="album2.jpg" alt="Album 2">
-                <p>Nome do Album</p>
-            </div>
-            <div class="card">
                 <img src="album3.jpg" alt="Album 3">
-                <p>Nome do Album</p>
+                <img src="album4.jpg" alt="Album 4">
             </div>
-        </div>
+
+            <h2 class="section-title">Recomendações</h2>
+            <div class="carousel">
+                <img src="album5.jpg" alt="Album 5">
+                <img src="album6.jpg" alt="Album 6">
+                <img src="album7.jpg" alt="Album 7">
+                <img src="album8.jpg" alt="Album 8">
+            </div>
+
+            <h2 class="section-title">Músicas em Alta</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="album9.jpg" alt="Album 9">
+                    <p>Música 1</p>
+                </div>
+                <div class="card">
+                    <img src="album10.jpg" alt="Album 10">
+                    <p>Música 2</p>
+                </div>
+                <div class="card">
+                    <img src="album11.jpg" alt="Album 11">
+                    <p>Música 3</p>
+                </div>
+                <div class="card">
+                    <img src="album12.jpg" alt="Album 12">
+                    <p>Música 4</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="explore" style="display: none;">
+            <h1>Explore novas músicas!</h1>
+            <p>Exibição de novas músicas, playlists e artistas recomendados.</p>
+        </section>
+
+        <section id="library" style="display: none;">
+            <h1>Sua Biblioteca</h1>
+            <p>Exibição de músicas e álbuns salvos.</p>
+        </section>
+
+        <section id="settings" style="display: none;">
+            <h1>Configurações</h1>
+            <p>Configurações de conta e preferências.</p>
+        </section>
     </div>
 
-    <!-- Overlay e Pop-up de Configurações -->
-    <div class="overlay" id="overlay">
-        <div class="popup">
-            <span class="close" onclick="closeSettings()">X</span>
-            <h3>Configurações</h3>
-            <button onclick="openQualitySettings()">Mudar qualidade das músicas</button>
-            <button onclick="openAccountSettings()">Trocar nome da conta</button>
-        </div>
-    </div>
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2025 YouMusic. Todos os direitos reservados.</p>
+    </footer>
 
-    <div class="overlay" id="qualityOverlay">
-        <div class="popup">
-            <span class="close" onclick="closeQualitySettings()">X</span>
-            <h3>Escolha a qualidade</h3>
-            <button>320 kbps</button>
-            <button>128 kbps</button>
-            <button>192 kbps</button>
-        </div>
-    </div>
+    <script>
+        // Função para trocar as seções da página
+        function openSection(section) {
+            const sections = document.querySelectorAll('.main-content > section');
+            sections.forEach(s => s.style.display = 'none');
+            document.getElementById(section).style.display = 'block';
 
-    <div class="overlay" id="accountOverlay">
-        <div class="popup">
-            <span class="close" onclick="closeAccountSettings()">X</span>
-            <h3>Trocar nome da conta</h3>
-            <input type="text" id="oldName" placeholder="Nome antigo">
-            <input type="text" id="newName" placeholder="Novo nome">
-            <button onclick="saveNewName()">Salvar</button>
-        </div>
-    </div>
+            const buttons = document.querySelectorAll('.sidebar button');
+            buttons.forEach(b => b.classList.remove('active'));
+            const activeButton = Array.from(buttons).find(b => b.textContent.toLowerCase() === section);
+            activeButton.classList.add('active');
+        }
 
-    <script src="script.js"></script>
+        // Função para abrir o perfil do usuário
+        function openProfile() {
+            alert("Abrindo perfil...");
+        }
+    </script>
+
 </body>
 </html>
