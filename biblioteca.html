@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="biblioteca">
+        <h2>Biblioteca</h2>
+        <button onclick="criarPlaylist()">Criar Playlist</button>
+        <div id="minhas-playlists">
+            <!-- As playlists criadas pelo usuário irão aparecer aqui -->
+        </div>
+    </div>
+
+    <script>
+        // Função para criar uma playlist e salvar no localStorage
+        function criarPlaylist() {
+            let nomePlaylist = prompt("Qual o nome da playlist?");
+            if (nomePlaylist) {
+                let playlists = JSON.parse(localStorage.getItem('playlists')) || [];
+                playlists.push({ nome: nomePlaylist, musicas: [] });
+                localStorage.setItem('playlists', JSON.stringify(playlists));
+                alert('Playlist criada com sucesso!');
+            }
+        }
+    </script>
+</body>
+</html>
