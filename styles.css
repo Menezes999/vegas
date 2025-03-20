@@ -69,12 +69,13 @@ header input {
 
 /* Perfil do usuário no cabeçalho */
 .profile {
-    background: #282828;
+    background: #1E90FF; /* Azul */
     color: white;
     border: none;
     padding: 10px 15px;
     border-radius: 50%;
     cursor: pointer;
+    position: relative;
 }
 
 /* Carrossel de imagens (Stories) */
