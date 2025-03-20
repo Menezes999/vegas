@@ -3,44 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Música</title>
+    <title>Music App</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="header">
-        <div class="logo">Minha Música</div>
-        <div id="perfil" class="perfil" onclick="togglePerfil()">A</div>
+
+    <!-- Barra Lateral -->
+    <div class="sidebar">
+        <h1>Music App</h1>
+        <button>Início</button>
+        <button>Explorar</button>
+        <button>Biblioteca</button>
+        <button>Configurações</button>
     </div>
 
-    <div id="main-content">
-        <div class="menu">
-            <a href="index.html">Início</a>
-            <a href="explorar.html">Explorar</a>
-            <a href="biblioteca.html">Biblioteca</a>
-            <a href="configuracoes.html">Configurações</a>
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+        <!-- Cabeçalho -->
+        <header>
+            <input type="text" placeholder="Buscar músicas, artistas...">
+            <button class="profile">Perfil</button>
+        </header>
+
+        <!-- Carrossel de Stories -->
+        <div class="carousel">
+            <img src="image1.jpg" alt="Imagem 1" width="150">
+            <img src="image2.jpg" alt="Imagem 2" width="150">
+            <img src="image3.jpg" alt="Imagem 3" width="150">
         </div>
 
-        <div id="conteudo">
-            <h2>Bem-vindo ao site!</h2>
-            <p>Explore sua música e crie playlists incríveis!</p>
+        <!-- Grid de Conteúdo -->
+        <div class="grid">
+            <div class="card">
+                <img src="album1.jpg" alt="Album 1">
+                <p>Nome do Album</p>
+            </div>
+            <div class="card">
+                <img src="album2.jpg" alt="Album 2">
+                <p>Nome do Album</p>
+            </div>
+            <div class="card">
+                <img src="album3.jpg" alt="Album 3">
+                <p>Nome do Album</p>
+            </div>
         </div>
     </div>
 
-    <script>
-        // Verifica se o usuário já está cadastrado e redireciona
-        window.onload = function () {
-            const nome = localStorage.getItem('nome');
-            if (!nome) {
-                window.location.href = 'cadastro.html'; // Redireciona para a tela de cadastro se não estiver cadastrado
-            }
-            document.getElementById('perfil').innerText = nome.charAt(0).toUpperCase(); // Exibe a primeira letra do nome
-        };
-
-        // Toggle do perfil
-        function togglePerfil() {
-            const perfilDrawer = document.getElementById('perfil-drawer');
-            perfilDrawer.classList.toggle('open');
-        }
-    </script>
 </body>
 </html>
