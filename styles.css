@@ -62,12 +62,14 @@ header input {
 }
 
 .profile {
-    background: #282828;
+    background: blue;
     color: white;
     border: none;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 50%;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
 }
 
 .carousel {
@@ -97,4 +99,38 @@ header input {
 .card img {
     width: 100%;
     border-radius: 10px;
+}
+
+.artist-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #333;
+    margin: 0 auto;
+    position: relative;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #181818;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.popup-content {
+    text-align: center;
+}
+
+#close-popup {
+    background: #333;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
