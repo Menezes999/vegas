@@ -13,10 +13,10 @@
             <h1>Vegas</h1>
         </div>
         <div class="sidebar-links">
-            <button id="homeButton">Início</button>
-            <button id="exploreButton">Explorar</button>
-            <button id="libraryButton">Biblioteca</button>
-            <button id="settingsButton">Configurações</button>
+            <button class="nav-button" id="homeButton"><i class="fas fa-home"></i> Início</button>
+            <button class="nav-button" id="exploreButton"><i class="fas fa-search"></i> Explorar</button>
+            <button class="nav-button" id="libraryButton"><i class="fas fa-bookmark"></i> Biblioteca</button>
+            <button class="nav-button" id="settingsButton"><i class="fas fa-cog"></i> Configurações</button>
         </div>
     </div>
 
@@ -24,30 +24,26 @@
     <div class="main-content">
         <header>
             <div class="search-container">
-                <input type="text" placeholder="Pesquisar músicas, álbuns...">
+                <input type="text" id="searchInput" placeholder="Buscar músicas, álbuns...">
             </div>
             <div class="profile" id="profileButton">
                 A <!-- Inicial ou Foto -->
             </div>
         </header>
 
-        <!-- Carrossel de conteúdo -->
+        <!-- Carrossel de Novidades -->
         <section class="carousel">
             <div class="carousel-item">
                 <img src="https://via.placeholder.com/300x200" alt="Album 1">
-                <p>Album 1</p>
+                <p>Novos Lançamentos</p>
             </div>
             <div class="carousel-item">
                 <img src="https://via.placeholder.com/300x200" alt="Album 2">
-                <p>Album 2</p>
-            </div>
-            <div class="carousel-item">
-                <img src="https://via.placeholder.com/300x200" alt="Album 3">
-                <p>Album 3</p>
+                <p>Mais Ouvidas</p>
             </div>
         </section>
 
-        <!-- Grid de artistas ou músicas -->
+        <!-- Grid de Músicas -->
         <section class="grid">
             <div class="card">
                 <img src="https://via.placeholder.com/150x150" alt="Artista 1">
@@ -57,23 +53,28 @@
                 <img src="https://via.placeholder.com/150x150" alt="Artista 2">
                 <p>Artista 2</p>
             </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/150x150" alt="Artista 3">
-                <p>Artista 3</p>
-            </div>
         </section>
     </div>
 
     <!-- Gaveta Lateral -->
     <div class="side-drawer" id="sideDrawer">
         <div class="drawer-content">
-            <button id="changeNameButton">Mudar Nome</button>
+            <button id="changeNameButton">Alterar Nome</button>
             <button id="changeProfilePicButton">Alterar Foto de Perfil</button>
             <button id="closeDrawer">Fechar</button>
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Pop-up para Configurações -->
+    <div class="popup" id="settingsPopup">
+        <div class="popup-content">
+            <h3>Configurações</h3>
+            <button id="changeQualityButton">Mudar Qualidade das Músicas</button>
+            <button id="changeNameButton">Trocar Nome da Conta</button>
+            <button id="closeSettingsPopup">Fechar</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
