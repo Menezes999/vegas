@@ -1,12 +1,21 @@
-const grid = document.querySelector(".grid");
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("Vegas Music carregado!");
 
-for (let i = 1; i <= 10; i++) {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.innerHTML = `
-        <img src="https://via.placeholder.com/150" alt="Música ${i}">
-        <p>Música ${i}</p>
-        <p>Artista ${i}</p>
-    `;
-    grid.appendChild(card);
-}
+    // Simulação de funcionalidade: Clique no perfil
+    document.querySelector(".profile").addEventListener("click", () => {
+        alert("Perfil em construção!");
+    });
+
+    // Simulação de carrossel deslizando automaticamente
+    const carousel = document.querySelector(".carousel");
+    let scrollAmount = 0;
+    function scrollCarousel() {
+        if (scrollAmount < carousel.scrollWidth - carousel.clientWidth) {
+            scrollAmount += 200;
+        } else {
+            scrollAmount = 0;
+        }
+        carousel.scrollTo({ left: scrollAmount, behavior: "smooth" });
+    }
+    setInterval(scrollCarousel, 3000);
+});
