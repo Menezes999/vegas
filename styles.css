@@ -1,29 +1,29 @@
-/* Layout e estilos básicos */
+/* Definições gerais */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121212; /* Cor de fundo escura */
-    color: #ffffff; /* Texto claro */
+    background-color: #121212; /* Cor escura de fundo */
+    color: #fff; /* Cor de texto clara */
 }
 
-#header {
-    background-color: #1e1e1e; /* Fundo escuro para o header */
-    color: white;
-    padding: 15px;
+header {
+    background-color: #1e1e1e;
+    color: #fff;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.logo {
+header .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #03a9f4; /* Azul vibrante para o logo */
+    color: #03a9f4; /* Cor do logo */
 }
 
-#perfil {
+header #perfil {
     width: 40px;
     height: 40px;
     background-color: #03a9f4;
@@ -36,68 +36,31 @@ body {
     font-size: 18px;
 }
 
-#main-content {
-    margin-top: 20px;
+/* Estilo para o conteúdo principal */
+main {
     padding: 20px;
 }
 
+/* Menu lateral */
 .menu {
     display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+    justify-content: space-around;
+    margin-top: 30px;
 }
 
 .menu a {
-    margin: 10px 0;
     text-decoration: none;
     color: #ffffff;
     font-weight: bold;
-    font-size: 18px;
-    transition: color 0.3s ease;
+    font-size: 20px;
+    transition: 0.3s;
 }
 
 .menu a:hover {
-    color: #03a9f4; /* Efeito de hover para os links */
+    color: #03a9f4; /* Efeito ao passar o mouse */
 }
 
-#conteudo {
-    margin-top: 30px;
-    font-size: 18px;
-}
-
-/* Estilos para o Drawer de Perfil */
-#perfil-drawer {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #1e1e1e;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    padding: 20px;
-    box-shadow: -4px 0 6px rgba(0, 0, 0, 0.3);
-}
-
-#perfil-drawer.open {
-    transform: translateX(0);
-}
-
-#perfil-drawer .user-info {
-    margin-bottom: 20px;
-}
-
-#perfil-drawer .user-info p {
-    margin: 5px 0;
-    font-size: 16px;
-}
-
-#perfil-drawer .user-info .username {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/* Popups */
+/* Estilo dos pop-ups */
 .popup {
     display: none;
     position: fixed;
@@ -132,28 +95,6 @@ body {
     background-color: #0288d1;
 }
 
-.popup-content h3 {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-/* Botões e links */
-button, .menu a {
-    background-color: #03a9f4;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-}
-
-button:hover, .menu a:hover {
-    background-color: #0288d1;
-}
-
-/* Estilo para Inputs */
 input[type="text"], input[type="password"], input[type="email"], textarea {
     width: 100%;
     padding: 12px;
@@ -163,42 +104,6 @@ input[type="text"], input[type="password"], input[type="email"], textarea {
     background-color: #333;
     color: white;
     font-size: 16px;
-}
-
-/* Estilo para a biblioteca */
-#biblioteca {
-    margin-top: 20px;
-}
-
-#minhas-playlists {
-    margin-top: 15px;
-}
-
-#minhas-playlists .playlist {
-    background-color: #333;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#minhas-playlists .playlist:hover {
-    background-color: #03a9f4;
-}
-
-#explorar .stories {
-    margin-top: 15px;
-    display: flex;
-    overflow-x: auto;
-    gap: 10px;
-}
-
-#explorar .stories img {
-    border-radius: 10px;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
 }
 
 /* Estilo para a tela de cadastro */
@@ -234,4 +139,74 @@ input[type="text"], input[type="password"], input[type="email"], textarea {
 
 #cadastro button:hover {
     background-color: #0288d1;
+}
+
+/* Estilo para o drawer de perfil */
+#perfil-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #1e1e1e;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    padding: 20px;
+    box-shadow: -4px 0 6px rgba(0, 0, 0, 0.3);
+}
+
+#perfil-drawer.open {
+    transform: translateX(0);
+}
+
+#perfil-drawer .user-info {
+    margin-bottom: 20px;
+}
+
+#perfil-drawer .user-info p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+#perfil-drawer .user-info .username {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Outros estilos de conteúdo */
+#biblioteca {
+    margin-top: 20px;
+}
+
+#explorar {
+    margin-top: 20px;
+}
+
+.stories {
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+}
+
+.stories img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+#minhas-playlists {
+    margin-top: 15px;
+}
+
+.playlist {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.playlist:hover {
+    background-color: #03a9f4;
 }
