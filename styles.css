@@ -56,7 +56,7 @@ header {
 }
 
 .search-container input {
-    width: 80%;  /* Aumentando a largura da barra de pesquisa para 80% */
+    width: 85%;  /* Aumentando a largura da barra de pesquisa para 85% */
     padding: 10px;
     border-radius: 5px;
     background-color: #282828;
