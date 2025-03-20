@@ -1,89 +1,68 @@
-// Função para verificar se o usuário já foi cadastrado
-window.onload = function() {
-    if (!localStorage.getItem('userName')) {
-        window.location.href = "cadastro.html"; // Redireciona para o cadastro
-    } else {
-        openProfile();
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("Vegas Music carregado!");
+
+    // Verifica se o usuário já está cadastrado
+    if (!localStorage.getItem("user")) {
+        let userName = prompt("Digite seu nome:");
+        let userPassword = prompt("Digite sua senha:");
+        localStorage.setItem("user", JSON.stringify({ name: userName, password: userPassword, avatar: "" }));
     }
-};
 
-// Função para abrir pop-ups de configurações
-function openSettings() {
-    document.getElementById('overlay').style.display = 'block';
-}
+    // Atualiza o perfil do usuário
+    const user = JSON.parse(localStorage.getItem("user"));
+    const profileButton = document.querySelector(".profile");
 
-function closeSettings() {
-    document.getElementById('overlay').style.display = 'none';
-}
+    // Exibe a primeira letra do nome do usuário no perfil
+    const firstLetter = user.name.charAt(0).toUpperCase();
+    profileButton.textContent = firstLetter;
+    profileButton.style.background = "#282828";  // Cor de fundo do círculo
+    profileButton.style.color = "white";
+    profileButton.style.borderRadius = "50%";
+    profileButton.style.width = "40px";
+    profileButton.style.height = "40px";
 
-function openQualitySettings() {
-    document.getElementById('qualityOverlay').style.display = 'block';
-}
+    // Elementos da gaveta lateral
+    const sideDrawer = document.getElementById("sideDrawer");
+    const changeNameButton = document.getElementById("changeNameButton");
+    const changeProfilePicButton = document.getElementById("changeProfilePicButton");
+    const closeDrawerButton = document.getElementById("closeDrawer");
 
-function closeQualitySettings() {
-    document.getElementById('qualityOverlay').style.display = 'none';
-}
+    // Função para abrir a gaveta lateral
+    profileButton.addEventListener("click", () => {
+        sideDrawer.classList.add("open");
+    });
 
-function openAccountSettings() {
-    document.getElementById('accountOverlay').style.display = 'block';
-}
+    // Função para fechar a gaveta lateral
+    closeDrawerButton.addEventListener("click", () => {
+        sideDrawer.classList.remove("open");
+    });
 
-function closeAccountSettings() {
-    document.getElementById('accountOverlay').style.display = 'none';
-}
-
-// Função para salvar o novo nome de conta
-function saveNewName() {
-    let oldName = document.getElementById('oldName').value;
-    let newName = document.getElementById('newName').value;
-    localStorage.setItem('userName', newName);
-    alert("Nome alterado com sucesso!");
-    closeAccountSettings();
-    openProfile();
-}
-
-// Função para o perfil
-function openProfile() {
-    let userName = localStorage.getItem('userName') || 'M';
-    document.querySelector('.profile').textContent = userName.charAt(0);
-
-    // Verifica se a foto de perfil está no localStorage
-    if (localStorage.getItem('profilePicture')) {
-        document.querySelector('.profile').style.backgroundImage = `url(${localStorage.getItem('profilePicture')})`;
-        document.querySelector('.profile').style.backgroundSize = 'cover';
-    }
-}
-
-// Função para carregar foto de perfil
-document.querySelector('.profile').addEventListener('click', function() {
-    let fileInput = document.createElement('input');
-    fileInput.type = 'file';
-    fileInput.accept = 'image/*';
-
-    fileInput.addEventListener('change', function(event) {
-        let file = event.target.files[0];
-        if (file) {
-            let reader = new FileReader();
-            reader.onload = function(e) {
-                let imgUrl = e.target.result;
-                localStorage.setItem('profilePicture', imgUrl);
-                openProfile(); // Atualiza o perfil
-            };
-            reader.readAsDataURL(file);
+    // Função para mudar o nome
+    changeNameButton.addEventListener("click", () => {
+        const newName = prompt("Digite o novo nome:");
+        if (newName) {
+            user.name = newName;
+            localStorage.setItem("user", JSON.stringify(user));
+            profileButton.textContent = newName.charAt(0).toUpperCase();
         }
     });
-    fileInput.click();
+
+    // Função para alterar a foto de perfil
+    changeProfilePicButton.addEventListener("click", () => {
+        let fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = "image/*";
+        fileInput.addEventListener("change", (event) => {
+            let file = event.target.files[0];
+            let reader = new FileReader();
+            reader.onload = () => {
+                user.avatar = reader.result;
+                localStorage.setItem("user", JSON.stringify(user));
+                profileButton.style.background = `url(${user.avatar}) center/cover`;
+                profileButton.textContent = ""; // Remove a letra quando há foto
+            };
+            reader.readAsDataURL(file);
+        });
+        fileInput.click();
+    });
 });
-
-// Função para navegação (explorar, biblioteca)
-function openStories() {
-    alert('Explorando músicas...');
-}
-
-function openLibrary() {
-    alert('Abrindo Biblioteca...');
-    let createPlaylistButton = document.createElement('button');
-    createPlaylistButton.textContent = 'Criar Playlist';
-    document.body.appendChild(createPlaylistButton);
-}
-
