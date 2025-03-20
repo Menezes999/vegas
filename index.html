@@ -72,11 +72,15 @@
             <button onclick="previousTrack()"><i class="fas fa-backward"></i></button>
             <button onclick="togglePlayPause()"><i id="play-pause-icon" class="fas fa-play"></i></button>
             <button onclick="nextTrack()"><i class="fas fa-forward"></i></button>
+            <button><i class="fas fa-volume-up"></i></button> <!-- Ícone de volume -->
         </div>
     </div>
 
     <!-- Side Drawer (Gaveta Lateral) -->
     <div class="side-drawer" id="side-drawer">
+        <div class="drawer-header">
+            <button onclick="toggleSideDrawer()" class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
         <div class="drawer-content">
             <button onclick="changeName()">Alterar Nome</button>
             <button onclick="changeProfilePicture()">Alterar Foto de Perfil</button>
