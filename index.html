@@ -1,60 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vegas Music</title>
+    <title>Minha Música</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="sidebar">
-        <h1>Vegas</h1>
-        <nav>
-            <button id="home-btn">Início</button>
-            <button id="explore-btn">Explorar</button>
-            <button id="library-btn">Biblioteca</button>
-            <button id="settings-btn">Configurações</button>
-        </nav>
+    <div id="header">
+        <div class="logo">Minha Música</div>
+        <div id="perfil" class="perfil" onclick="togglePerfil()">A</div>
     </div>
-    <div class="main-content">
-        <header>
-            <input type="text" placeholder="Buscar músicas, artistas...">
-            <button class="profile">P</button>
-        </header>
-        <h2>Artistas</h2>
-        <div class="carousel">
-            <div class="card">
-                <div class="artist-photo"></div>
-                <p>Artista 1</p>
-            </div>
-            <div class="card">
-                <div class="artist-photo"></div>
-                <p>Artista 2</p>
-            </div>
-            <div class="card">
-                <div class="artist-photo"></div>
-                <p>Artista 3</p>
-            </div>
+
+    <div id="main-content">
+        <div class="menu">
+            <a href="index.html">Início</a>
+            <a href="explorar.html">Explorar</a>
+            <a href="biblioteca.html">Biblioteca</a>
+            <a href="configuracoes.html">Configurações</a>
         </div>
-        <h2>Ouça Novamente</h2>
-        <div class="grid" id="history">
-            <!-- Histórico de músicas será carregado aqui -->
-        </div>
-        <h2>Recomendações</h2>
-        <div class="grid">
-            <div class="card"><img src="img1.jpg" alt="Música 1"></div>
-            <div class="card"><img src="img2.jpg" alt="Música 2"></div>
-            <div class="card"><img src="img3.jpg" alt="Música 3"></div>
+
+        <div id="conteudo">
+            <h2>Bem-vindo ao site!</h2>
+            <p>Explore sua música e crie playlists incríveis!</p>
         </div>
     </div>
-    <div id="settings-popup" class="popup">
-        <div class="popup-content">
-            <h2>Configurações</h2>
-            <p>Mudar qualidade das músicas</p>
-            <p>Trocar nome da conta</p>
-            <button id="close-popup">Fechar</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
+
+    <script>
+        // Verifica se o usuário já está cadastrado e redireciona
+        window.onload = function () {
+            const nome = localStorage.getItem('nome');
+            if (!nome) {
+                window.location.href = 'cadastro.html'; // Redireciona para a tela de cadastro se não estiver cadastrado
+            }
+            document.getElementById('perfil').innerText = nome.charAt(0).toUpperCase(); // Exibe a primeira letra do nome
+        };
+
+        // Toggle do perfil
+        function togglePerfil() {
+            const perfilDrawer = document.getElementById('perfil-drawer');
+            perfilDrawer.classList.toggle('open');
+        }
+    </script>
 </body>
 </html>
