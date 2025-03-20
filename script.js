@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("Vegas Music carregado!");
-
     // Verifica se o usuário já está cadastrado
     if (!localStorage.getItem("user")) {
         let userName = prompt("Digite seu nome:");
@@ -10,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Atualiza o perfil do usuário
     const user = JSON.parse(localStorage.getItem("user"));
-    const profileButton = document.querySelector(".profile");
+    const profileButton = document.getElementById("profileButton");
 
     // Exibe a primeira letra do nome do usuário no perfil
     const firstLetter = user.name.charAt(0).toUpperCase();
