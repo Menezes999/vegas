@@ -1,10 +1,10 @@
-/* Estilos globais */
+/* Global Styles */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     background-color: #121212;
     color: white;
-    padding-bottom: 60px; /* Para deixar espaço para a barra inferior */
+    padding-bottom: 60px; /* Deixando espaço para a barra inferior */
 }
 
 /* Sidebar */
@@ -47,75 +47,124 @@ body {
     border-radius: 5px;
 }
 
-/* Conteúdo principal */
+/* Main Content */
 .main-content {
-    margin-left: 270px; /* Ajustado para afastar mais o conteúdo da sidebar */
+    margin-left: 270px; /* Ajustando para afastar mais o conteúdo da barra lateral */
     padding: 20px;
+    z-index: 0;
+    margin-right: 30px; /* Ajustando para deslocar o conteúdo um pouco mais para a direita */
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #181818;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .search-container input {
+    width: 75%;  /* Aumentando a largura da barra de pesquisa */
     padding: 10px;
-    width: 300px;
-    border-radius: 25px;
-    border: none;
-    background-color: #333;
+    border-radius: 5px;
+    background-color: #282828;
     color: white;
+    border: none;
 }
 
 .profile {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #333;
+    background-color: #282828;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    color: white;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.profile:hover {
-    background-color: #555;
+/* Music Carousel */
+.carousel {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
-/* Barra Inferior (Player) */
+.carousel-item {
+    width: 300px;
+    text-align: center;
+    background-color: #282828;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #282828;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Bottom Player Bar */
 .player {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     background-color: #181818;
-    padding: 10px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 200;
+    box-shadow: 0px -3px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Estilos do nome da faixa */
+/* Track Info */
 .track-info {
     color: white;
+    flex-grow: 1;
+    text-align: left;
+    margin-left: 20px;
 }
 
-/* Controles do player */
+/* Player Controls */
 .player-controls {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
 .player-controls button {
     background-color: transparent;
     color: white;
     border: none;
+    cursor: pointer;
     padding: 10px;
     font-size: 18px;
-    cursor: pointer;
     transition: 0.3s;
 }
 
@@ -124,32 +173,31 @@ header {
     border-radius: 5px;
 }
 
-/* Gaveta lateral (Perfil) */
+/* Side Drawer (Profile Menu) */
 .side-drawer {
     position: fixed;
     top: 0;
-    right: -240px;
-    width: 240px;
+    right: -300px;
+    width: 300px;
     height: 100%;
     background-color: #181818;
-    padding: 20px;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
-    transition: 0.3s;
-    z-index: 200;
+    transition: right 0.3s ease;
+    z-index: 100;
 }
 
-/* Quando a gaveta lateral estiver aberta */
+/* Open Drawer */
 .side-drawer.open {
     right: 0;
 }
 
-/* Botão de fechar (X) */
+/* Drawer Header */
 .drawer-header {
     display: flex;
     justify-content: flex-end;
     padding-bottom: 10px;
 }
 
+/* Close Button (X) */
 .close-btn {
     background-color: transparent;
     color: white;
@@ -163,21 +211,29 @@ header {
     color: red;
 }
 
-/* Botões dentro da gaveta lateral */
+/* Drawer Content */
+.drawer-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
 .drawer-content button {
-    background-color: transparent;
+    background-color: #282828;
     color: white;
-    border: none;
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0;
+    border: none;
     cursor: pointer;
+    border-radius: 5px;
     transition: 0.3s;
-    display: block;
-    width: 100%;
-    text-align: left;
 }
 
 .drawer-content button:hover {
-    background-color: #282828;
-    border-radius: 5px;
+    background-color: #333;
+}
+
+/* Ajuste do player */
+.track-info {
+    margin-left: 15px;
 }
