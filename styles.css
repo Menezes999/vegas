@@ -1,116 +1,70 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #121212;
-    color: white;
-    transition: background-color 0.3s, color 0.3s;
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const profileBtn = document.getElementById("profile-btn");
+    const profileModal = document.getElementById("profile-modal");
+    const settingsBtn = document.getElementById("settings-btn");
+    const settingsModal = document.getElementById("settings-modal");
+    const themeToggle = document.getElementById("theme-toggle");
+    const qualitySelect = document.getElementById("quality-select");
+    const profileImg = document.getElementById("profile-img");
+    const profileName = document.getElementById("profile-name");
+    const fileInput = document.getElementById("file-input");
 
-.light-theme {
-    background-color: white;
-    color: black;
-}
+    let userData = JSON.parse(localStorage.getItem("userData")) || {};
 
-.sidebar {
-    width: 200px;
-    height: 100vh;
-    background: #181818;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-}
+    function updateProfile() {
+        if (userData.image) {
+            profileImg.src = userData.image;
+            profileImg.style.display = "block";
+        } else {
+            profileImg.style.display = "none";
+        }
+        profileName.textContent = userData.name ? userData.name[0].toUpperCase() : "?";
+    }
 
-.sidebar button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 16px;
-    margin: 10px 0;
-    cursor: pointer;
-}
+    profileBtn.addEventListener("click", () => {
+        profileModal.style.display = "flex";
+    });
 
-.main-content {
-    margin-left: 220px;
-    padding: 20px;
-}
+    settingsBtn.addEventListener("click", () => {
+        settingsModal.style.display = "flex";
+    });
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background: #181818;
-    position: fixed;
-    top: 0;
-    left: 220px;
-    right: 0;
-}
+    themeToggle.addEventListener("change", () => {
+        document.body.classList.toggle("light-theme", themeToggle.checked);
+        localStorage.setItem("theme", themeToggle.checked ? "light" : "dark");
+    });
 
-.profile {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: blue;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
+    qualitySelect.addEventListener("change", () => {
+        localStorage.setItem("quality", qualitySelect.value);
+    });
 
-.profile img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-}
+    fileInput.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                userData.image = e.target.result;
+                localStorage.setItem("userData", JSON.stringify(userData));
+                updateProfile();
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 
-.carousel, .history-grid, .grid {
-    display: flex;
-    gap: 10px;
-}
+    document.getElementById("save-profile").addEventListener("click", () => {
+        const newName = document.getElementById("name-input").value;
+        if (newName) {
+            userData.name = newName;
+            localStorage.setItem("userData", JSON.stringify(userData));
+            updateProfile();
+        }
+        profileModal.style.display = "none";
+    });
 
-.artist-card {
-    text-align: center;
-}
+    updateProfile();
 
-.artist-img {
-    width: 80px;
-    height: 80px;
-    background: gray;
-    border-radius: 50%;
-}
-
-.card img {
-    width: 100px;
-    height: 100px;
-}
-
-#profile-modal, #settings-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #181818;
-    padding: 20px;
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.light-theme #profile-modal, .light-theme #settings-modal {
-    background: white;
-    color: black;
-}
-
-button {
-    background: #1db954;
-    border: none;
-    padding: 10px;
-    color: white;
-    cursor: pointer;
-}
+    if (localStorage.getItem("theme") === "light") {
+        document.body.classList.add("light-theme");
+        themeToggle.checked = true;
+    }
+});
